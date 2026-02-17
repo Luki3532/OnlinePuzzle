@@ -1,0 +1,380 @@
+
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+<!-- PASSWORD IS: GOTCHA -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hubBUDa</title>
+    <script>
+        // Global huntTree for scavenger hunt navigation
+        const huntTree = [
+            {id:'link1',text:'Link 1'},
+            {id:'link2',text:'Link 2'},
+            {id:'link3',text:'Link 3'},
+            {id:'link4',text:'Link 4'},
+            {id:'link5',text:'Link 5'}
+        ];
+        // Password hint for developers/inspectors
+        console.log('Password is GOTCHA');
+    </script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 100px; }
+        h1 { font-size: 2.5em; }
+        input[type="text"] { padding: 10px; font-size: 1em; width: 250px; }
+    </style>
+</head>
+<body>
+    <audio id="siteAudio" src="assets/audio/audio.mp3" loop></audio>
+    <script>
+        // Ensure global audio only plays once
+        const globalAudio = document.getElementById('siteAudio');
+        globalAudio.volume = 1;
+        function playAudio() {
+            if (globalAudio.paused) {
+                globalAudio.play().catch(() => {});
+            }
+            document.removeEventListener('click', playAudio);
+        }
+        document.addEventListener('click', playAudio);
+    </script>
+    <h1>hubBUDa</h1>
+    <input id="passwordBox" type="text" placeholder="Enter password..." />
+    <script>
+        const passwordBox = document.getElementById('passwordBox');
+        // ...existing code...
+        passwordBox.addEventListener('input', function() {
+            const val = passwordBox.value.trim();
+            if (val.toLowerCase() === 'gotcha') {
+                document.body.innerHTML = `
+                    <h1>hubDUBa</h1>
+                    <div style='margin-top:40px;'>
+                        <p>Puzzle: What is (3 + 5) × 2 - 4?</p>
+                        <div>
+                            <label><input type='radio' name='math' value='12'> 12</label><br>
+                            <label><input type='radio' name='math' value='14'> 14</label><br>
+                            <label><input type='radio' name='math' value='16'> 16</label><br>
+                            <label><input type='radio' name='math' value='10'> 10</label><br>
+                        </div>
+                    </div>
+                `;
+                // Ensure audio plays on this screen
+                        function triggerPuzzleScreen() {
+                            document.body.innerHTML = `
+                                <h1>hubDUBa</h1>
+                                <div style='margin-top:40px;'>
+                                    <p>Puzzle: What is (3 + 5) × 2 - 4?</p>
+                                    <div>
+                                        <label><input type='radio' name='math' value='12'> 12</label><br>
+                                        <label><input type='radio' name='math' value='14'> 14</label><br>
+                                        <label><input type='radio' name='math' value='16'> 16</label><br>
+                                        <label><input type='radio' name='math' value='10'> 10</label><br>
+                                    </div>
+                                </div>
+                            `;
+                            if (globalAudio.paused) { globalAudio.play().catch(() => {}); }
+                            setTimeout(function() {
+                                document.querySelectorAll("input[name='math']").forEach(function(radio) {
+                                    radio.addEventListener('click', function() {
+                                        if (this.value === '14') {
+                                            document.body.innerHTML = `
+                                                <h1>hubDUBa</h1>
+                                                <div style='margin-top:40px;'>
+                                                    <p>Congratulations! Here is your video:</p>
+                                                    <div id='videoContainer'>
+                                                        <video width='480' controls autoplay>
+                                                            <source src='assets/video/video.mp4' type='video/mp4'>
+                                                            Your browser does not support the video tag.
+                                                        </video>
+                                                    </div>
+                                                    <div style='margin-top:40px;'>
+                                                        <p>What country is this?</p>
+                                                        <div id='countryChoices'>
+                                                            <label><input type='radio' name='country' value='Andorra'> Andorra</label><br>
+                                                            <label><input type='radio' name='country' value='Comoros'> Comoros</label><br>
+                                                            <label><input type='radio' name='country' value='Djibouti'> Djibouti</label><br>
+                                                            <label><input type='radio' name='country' value='Eswatini'> Eswatini</label><br>
+                                                            <label><input type='radio' name='country' value='Kiribati'> Kiribati</label><br>
+                                                            <label><input type='radio' name='country' value='Liechtenstein'> Liechtenstein</label><br>
+                                                            <label><input type='radio' name='country' value='Malta'> Malta</label><br>
+                                                            <label><input type='radio' name='country' value='Nauru'> Nauru</label><br>
+                                                            <label><input type='radio' name='country' value='Palau'> Palau</label><br>
+                                                            <label><input type='radio' name='country' value='San Marino'> San Marino</label><br>
+                                                            <label><input type='radio' name='country' value='Seychelles'> Seychelles</label><br>
+                                                            <label><input type='radio' name='country' value='Solomon Islands'> Solomon Islands</label><br>
+                                                            <label><input type='radio' name='country' value='Suriname'> Suriname</label><br>
+                                                            <label><input type='radio' name='country' value='Tuvalu'> Tuvalu</label><br>
+                                                            <label><input type='radio' name='country' value='Vanuatu'> Vanuatu</label><br>
+                                                            <label><input type='radio' name='country' value='Sri Lanka'> Sri Lanka</label><br>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            `;
+                                            if (globalAudio.paused) { globalAudio.play().catch(() => {}); }
+                                            setTimeout(playAudio, 0);
+                                            setTimeout(function() {
+                                                document.querySelectorAll("input[name='country']").forEach(function(radio) {
+                                                    radio.addEventListener('click', function() {
+                                                        if (this.value === 'Sri Lanka') {
+                                                            document.body.innerHTML = `
+                                                                <h1>hubDUBa</h1>
+                                                                <div style='margin-top:40px;'>
+                                                                    <p>Success! You guessed the country correctly: Sri Lanka!</p>
+                                                                    <button id='continueBtn' style='margin-top:20px;padding:10px 20px;font-size:1em;'>Continue</button>
+                                                                </div>
+                                                            `;
+                                                            setTimeout(playAudio, 0);
+                                                            setTimeout(function() {
+                                                                document.getElementById('continueBtn').addEventListener('click', function() {
+                                                                    renderHuntScreen(['Home'], huntTree, 'Navigate this website and look for the special password!', true, false);
+                                                                });
+                                                            },0);
+                                                        }
+                                                    });
+                                                });
+                                            },0);
+                                        }
+                                    });
+                                });
+                            },0);
+                        }
+                        // Listen for input and Enter key
+                        passwordBox.addEventListener('input', function() {
+                            const val = passwordBox.value.trim();
+                            if (val.toLowerCase() === 'gotcha') {
+                                triggerPuzzleScreen();
+                            }
+                        });
+                        passwordBox.addEventListener('keydown', function(e) {
+                            if (e.key === 'Enter' && passwordBox.value.trim().toLowerCase() === 'gotcha') {
+                                triggerPuzzleScreen();
+                            }
+                        });
+                                            renderHuntScreen(['Home','Link 1'], [
+                                                {id:'link1a',text:'Link 1A'},
+                                                {id:'link1b',text:'Link 1B'}
+                                            ], 'Keep searching! Try another link.', false, false);
+                                        } else if (l.id === 'link1a') {
+                                            renderHuntScreen(['Home','Link 1','Link 1A'], [
+                                                {id:'link1a1',text:'Link 1A1'},
+                                                {id:'link1a2',text:'Link 1A2'}
+                                            ], 'Still not here. Try another.', false, false);
+                                        } else if (l.id === 'link1a1' || l.id === 'link1a2' || l.id === 'link1b') {
+                                            renderHuntScreen(breadcrumb.concat([l.text]), [], 'No password here!', false, false);
+                                        } else if (l.id === 'link2') {
+                                            renderHuntScreen(['Home','Link 2'], [
+                                                {id:'link2a',text:'Link 2A'},
+                                                {id:'link2b',text:'Link 2B'}
+                                            ], 'Keep searching! Try another link.', false, false);
+                                        } else if (l.id === 'link2a') {
+                                            renderHuntScreen(['Home','Link 2','Link 2A'], [
+                                                {id:'link2a1',text:'Link 2A1'},
+                                                {id:'link2a2',text:'Link 2A2'}
+                                            ], 'Almost there! Try Link 2A2.', false, false);
+                                        } else if (l.id === 'link2a1') {
+                                            renderHuntScreen(breadcrumb.concat([l.text]), [], 'No password here!', false, false);
+                                        } else if (l.id === 'link2a2') {
+                                            renderHuntScreen(['Home','Link 2','Link 2A','Link 2A2'], [
+                                                {id:'link2a2final',text:'Final Link'}
+                                            ], 'Final step!', false, false);
+                                        } else if (l.id === 'link2a2final') {
+                                            renderHuntScreen(['Home','Link 2','Link 2A','Link 2A2','Final Link'], [
+                                                {id:'finalBack',text:'Back'}
+                                            ], 'Congratulations! The special password is revealed below.', true, false);
+                                            setTimeout(function() {
+                                                document.getElementById('finalBack').addEventListener('click', function() {
+                                                    renderHuntScreen(['Home','Link 2','Link 2A','Link 2A2'], [
+                                                        {id:'link2a2final',text:'Final Link'}
+                                                    ], 'Final step!', false, false);
+                                                });
+                                                var input = document.getElementById('huntPasswordBox');
+                                                if (input) {
+                                                    input.addEventListener('keydown', function(e) {
+                                                        if (e.key === 'Enter' && input.value.trim() === 'Decimal') {
+                                                            document.body.innerHTML = `
+                                                                <h1>CONGRATULATIONS!</h1>
+                                                                <div style='margin-top:40px;'>
+                                                                    <img src='https://upload.wikimedia.org/wikipedia/commons/7/7b/Red_eyed_tree_frog_edit2.jpg' alt='Frog' style='max-width:300px;border-radius:12px;box-shadow:0 2px 8px #888;'>
+                                                                    <p style='font-size:1.5em;margin-top:20px;'>You won a photo of a frog!</p>
+                                                                </div>
+                                                            `;
+                                                            if (globalAudio.paused) { globalAudio.play().catch(() => {}); }
+                                                        }
+                                                    });
+                                                }
+                                            },0);
+                                        } else if (l.id === 'link2b') {
+                                            renderHuntScreen(breadcrumb.concat([l.text]), [], 'No password here!', false, false);
+                                        } else if (l.id === 'finalBack') {
+                                            renderHuntScreen(['Home','Link 2','Link 2A','Link 2A2'], [
+                                                {id:'link2a2final',text:'Final Link'}
+                                            ], 'Final step!', false, false);
+                                        } else if (['link3','link4','link5'].includes(l.id)) {
+                                            renderHuntScreen(['Home',l.text], [], 'Keep searching! Try another link.', false, false);
+                                        }
+                                    });
+                                }
+                            });
+                            // Back navigation
+                            if (showBack) {
+                                var backEl = document.getElementById(backId);
+                                if (backEl) {
+                                    backEl.addEventListener('click', function() {
+                                        let prev = breadcrumb.slice(0, -1);
+                                        if (prev.length === 0) {
+                                            document.body.innerHTML = `
+                                                <h1>hubBUDa</h1>
+                                                <input id="passwordBox" type="text" placeholder="Enter password..." />
+                                            `;
+                                            if (globalAudio.paused) { globalAudio.play().catch(() => {}); }
+                                            setTimeout(function() {
+                                                const passwordBox = document.getElementById('passwordBox');
+                                                passwordBox.addEventListener('input', function(e) {
+                                                    const val = passwordBox.value.trim();
+                                                    if (val.toLowerCase() === 'gotcha') {
+                                                        // Only trigger once
+                                                        passwordBox.value = '';
+                                                        document.body.innerHTML = `
+                                                            <h1>hubDUBa</h1>
+                                                            <div style='margin-top:40px;'>
+                                                                <p>Puzzle: What is (3 + 5) × 2 - 4?</p>
+                                                                <div>
+                                                                    <label><input type='radio' name='math' value='12'> 12</label><br>
+                                                                    <label><input type='radio' name='math' value='14'> 14</label><br>
+                                                                    <label><input type='radio' name='math' value='16'> 16</label><br>
+                                                                    <label><input type='radio' name='math' value='10'> 10</label><br>
+                                                                </div>
+                                                            </div>
+                                                        `;
+                                                        if (globalAudio.paused) { globalAudio.play().catch(() => {}); }
+                                                        setTimeout(function() {
+                                                            document.querySelectorAll("input[name='math']").forEach(function(radio) {
+                                                                radio.addEventListener('click', function() {
+                                                                    if (this.value === '14') {
+                                                                        document.body.innerHTML = `
+                                                                            <h1>hubDUBa</h1>
+                                                                            <div style='margin-top:40px;'>
+                                                                                <p>Congratulations! Here is your video:</p>
+                                                                                <div id='videoContainer'>
+                                                                                    <video width='480' controls autoplay>
+                                                                                        <source src='assets/video/video.mp4' type='video/mp4'>
+                                                                                        Your browser does not support the video tag.
+                                                                                    </video>
+                                                                                </div>
+                                                                                <div style='margin-top:40px;'>
+                                                                                    <p>What country is this?</p>
+                                                                                    <div id='countryChoices'>
+                                                                                        <label><input type='radio' name='country' value='Andorra'> Andorra</label><br>
+                                                                                        <label><input type='radio' name='country' value='Comoros'> Comoros</label><br>
+                                                                                        <label><input type='radio' name='country' value='Djibouti'> Djibouti</label><br>
+                                                                                        <label><input type='radio' name='country' value='Eswatini'> Eswatini</label><br>
+                                                                                        <label><input type='radio' name='country' value='Kiribati'> Kiribati</label><br>
+                                                                                        <label><input type='radio' name='country' value='Liechtenstein'> Liechtenstein</label><br>
+                                                                                        <label><input type='radio' name='country' value='Malta'> Malta</label><br>
+                                                                                        <label><input type='radio' name='country' value='Nauru'> Nauru</label><br>
+                                                                                        <label><input type='radio' name='country' value='Palau'> Palau</label><br>
+                                                                                        <label><input type='radio' name='country' value='San Marino'> San Marino</label><br>
+                                                                                        <label><input type='radio' name='country' value='Seychelles'> Seychelles</label><br>
+                                                                                        <label><input type='radio' name='country' value='Solomon Islands'> Solomon Islands</label><br>
+                                                                                        <label><input type='radio' name='country' value='Suriname'> Suriname</label><br>
+                                                                                        <label><input type='radio' name='country' value='Tuvalu'> Tuvalu</label><br>
+                                                                                        <label><input type='radio' name='country' value='Vanuatu'> Vanuatu</label><br>
+                                                                                        <label><input type='radio' name='country' value='Sri Lanka'> Sri Lanka</label><br>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        `;
+                                                                        if (globalAudio.paused) { globalAudio.play().catch(() => {}); }
+                                                                        setTimeout(function() {
+                                                                            document.querySelectorAll("input[name='country']").forEach(function(radio) {
+                                                                                radio.addEventListener('click', function() {
+                                                                                    if (this.value === 'Sri Lanka') {
+                                                                                        document.body.innerHTML = `
+                                                                                            <h1>hubDUBa</h1>
+                                                                                            <div style='margin-top:40px;'>
+                                                                                                <p>Success! You guessed the country correctly: Sri Lanka!</p>
+                                                                                                <button id='continueBtn' style='margin-top:20px;padding:10px 20px;font-size:1em;'>Continue</button>
+                                                                                            </div>
+                                                                                        `;
+                                                                                        if (globalAudio.paused) { globalAudio.play().catch(() => {}); }
+                                                                                        setTimeout(function() {
+                                                                                            document.getElementById('continueBtn').addEventListener('click', function() {
+                                                                                                renderHuntScreen(['Home'], huntTree, 'Navigate this website and look for the special password!', true, false);
+                                                                                            });
+                                                                                        },0);
+                                                                                    }
+                                                                                });
+                                                                            });
+                                                                        },0);
+                                                                    }
+                                                                });
+                                                            });
+                                                        },0);
+                                                    }
+                                                });
+                                            },0);
+                                        } else if (prev.length === 1) {
+                                            renderHuntScreen(['Home'], huntTree, 'Navigate this website and look for the special password!', true, false);
+                                        } else if (prev.join('') === 'HomeLink 1') {
+                                            renderHuntScreen(['Home','Link 1'], [
+                                                {id:'link1a',text:'Link 1A'},
+                                                {id:'link1b',text:'Link 1B'}
+                                            ], 'Keep searching! Try another link.', false, false);
+                                        } else if (prev.join('') === 'HomeLink 1Link 1A') {
+                                            renderHuntScreen(['Home','Link 1','Link 1A'], [
+                                                {id:'link1a1',text:'Link 1A1'},
+                                                {id:'link1a2',text:'Link 1A2'}
+                                            ], 'Still not here. Try another.', false, false);
+                                        } else if (prev.join('') === 'HomeLink 2') {
+                                            renderHuntScreen(['Home','Link 2'], [
+                                                {id:'link2a',text:'Link 2A'},
+                                                {id:'link2b',text:'Link 2B'}
+                                            ], 'Keep searching! Try another link.', false, false);
+                                        } else if (prev.join('') === 'HomeLink 2Link 2A') {
+                                            renderHuntScreen(['Home','Link 2','Link 2A'], [
+                                                {id:'link2a1',text:'Link 2A1'},
+                                                {id:'link2a2',text:'Link 2A2'}
+                                            ], 'Almost there! Try Link 2A2.', false, false);
+                                        } else if (prev.join('') === 'HomeLink 2Link 2ALink 2A2') {
+                                            renderHuntScreen(['Home','Link 2','Link 2A','Link 2A2'], [
+                                                {id:'link2a2final',text:'Final Link'}
+                                            ], 'Final step!', false, false);
+                                        } else {
+                                            renderHuntScreen(['Home'], huntTree, 'Navigate this website and look for the special password!', true, false);
+                                        }
+                                    });
+                                }
+                            }
+                        },0);
+                    // ...existing code...
+    </script>
+</body>
+</html>
