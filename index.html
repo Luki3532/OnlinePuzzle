@@ -83,19 +83,15 @@
             app.innerHTML = `
                 <h1>hubDUBa</h1>
                 <div style="margin-top:40px;">
-                    <p>Puzzle: What is (3 + 5) &times; 2 - 4?</p>
+                    <p>Puzzle: What is (3 &times; 4) + 8 - 5 + (2 &times; 3) - 1?</p>
                     <div>
-                        <label><input type="radio" name="math" value="12"> 12</label><br>
-                        <label><input type="radio" name="math" value="14"> 14</label><br>
-                        <label><input type="radio" name="math" value="16"> 16</label><br>
-                        <label><input type="radio" name="math" value="10"> 10</label><br>
+                        <input id="mathAnswer" type="text" placeholder="Type your answer..." style="padding:8px;font-size:1em;">
                     </div>
                 </div>`;
             ensureAudio();
-            document.querySelectorAll("input[name='math']").forEach(function (r) {
-                r.addEventListener('click', function () {
-                    if (this.value === '14') renderVideoScreen();
-                });
+            var mathBox = document.getElementById('mathAnswer');
+            mathBox.addEventListener('input', function () {
+                if (mathBox.value.trim() === '20') renderVideoScreen();
             });
         }
 
