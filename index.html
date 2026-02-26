@@ -1,413 +1,193 @@
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-<!-- PASSWORD IS: GOTCHA -->
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hubBUDa</title>
-    <script>
-        // Global huntTree for scavenger hunt navigation
-        const huntTree = [
-            {id:'link1',text:'Link 1'},
-            {id:'link2',text:'Link 2'},
-            {id:'link3',text:'Link 3'},
-            {id:'link4',text:'Link 4'},
-            {id:'link5',text:'Link 5'}
-        ];
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .breadcrumb { color: #666; margin-bottom: 10px; }
+        .breadcrumb span::after { content: ' > '; }
+        .breadcrumb span:last-child::after { content: ''; }
+        a.hunt-link { display: block; margin: 5px 0; cursor: pointer; color: blue; text-decoration: underline; }
+        #backBtn { margin-top: 20px; padding: 8px 16px; cursor: pointer; }
     </style>
 </head>
 <body>
     <audio id="siteAudio" src="assets/audio/audio.mp3" loop></audio>
+    <div id="app"></div>
+
     <script>
-        // Ensure global audio only plays once
+        /* ── Audio ── */
         const globalAudio = document.getElementById('siteAudio');
         globalAudio.volume = 1;
-        function playAudio() {
-            if (globalAudio.paused) {
-                globalAudio.play().catch(() => {});
-            }
-            document.removeEventListener('click', playAudio);
-        }
-        document.addEventListener('click', playAudio);
-    </script>
-    <h1>hubBUDa</h1>
-    <input id="passwordBox" type="text" placeholder="Enter password..." />
-    <script>
-        const passwordBox = document.getElementById('passwordBox');
-        // ...existing code...
-        passwordBox.addEventListener('input', function() {
-            const val = passwordBox.value.trim();
-            if (val.toLowerCase() === 'gotcha') {
-                // Only trigger once
-                passwordBox.value = '';
-                document.body.innerHTML = `
-                    <h1>hubDUBa</h1>
-                    <div style='margin-top:40px;'>
-                        <p>Puzzle: What is (3 + 5) × 2 - 4?</p>
-                        <div>
-                            <label><input type='radio' name='math' value='12'> 12</label><br>
-                            <label><input type='radio' name='math' value='14'> 14</label><br>
-                            <label><input type='radio' name='math' value='16'> 16</label><br>
-                            <label><input type='radio' name='math' value='10'> 10</label><br>
-                        </div>
-                    </div>
-                `;
-                if (globalAudio.paused) { globalAudio.play().catch(() => {}); }
-                setTimeout(function() {
-                    document.querySelectorAll("input[name='math']").forEach(function(radio) {
-                        radio.addEventListener('click', function() {
-                            if (this.value === '14') {
-                                document.body.innerHTML = `
-                                    <h1>hubDUBa</h1>
-                                    <div style='margin-top:40px;'>
-                                        <p>Congratulations! Here is your video:</p>
-                                        <div id='videoContainer'>
-                                            <video width='480' controls autoplay>
-                                                <source src='assets/video/video.mp4' type='video/mp4'>
-                                                Your browser does not support the video tag.
-                                            </video>
-                                        </div>
-                                        <div style='margin-top:40px;'>
-                                            <p>What country is this?</p>
-                                            <div id='countryChoices'>
-                                                <label><input type='radio' name='country' value='Andorra'> Andorra</label><br>
-                                                <label><input type='radio' name='country' value='Comoros'> Comoros</label><br>
-                                                <label><input type='radio' name='country' value='Djibouti'> Djibouti</label><br>
-                                                <label><input type='radio' name='country' value='Eswatini'> Eswatini</label><br>
-                                                <label><input type='radio' name='country' value='Kiribati'> Kiribati</label><br>
-                                                <label><input type='radio' name='country' value='Liechtenstein'> Liechtenstein</label><br>
-                                                <label><input type='radio' name='country' value='Malta'> Malta</label><br>
-                                                <label><input type='radio' name='country' value='Nauru'> Nauru</label><br>
-                                                <label><input type='radio' name='country' value='Palau'> Palau</label><br>
-                                                <label><input type='radio' name='country' value='San Marino'> San Marino</label><br>
-                                                <label><input type='radio' name='country' value='Seychelles'> Seychelles</label><br>
-                                                <label><input type='radio' name='country' value='Solomon Islands'> Solomon Islands</label><br>
-                                                <label><input type='radio' name='country' value='Suriname'> Suriname</label><br>
-                                                <label><input type='radio' name='country' value='Tuvalu'> Tuvalu</label><br>
-                                                <label><input type='radio' name='country' value='Vanuatu'> Vanuatu</label><br>
-                                                <label><input type='radio' name='country' value='Sri Lanka'> Sri Lanka</label><br>
-                                            </div>
-                                        </div>
-                                    </div>
-                                `;
-                                if (globalAudio.paused) { globalAudio.play().catch(() => {}); }
-                                setTimeout(playAudio, 0);
-                                setTimeout(function() {
-                                    document.querySelectorAll("input[name='country']").forEach(function(radio) {
-                                        radio.addEventListener('click', function() {
-                                            if (this.value === 'Sri Lanka') {
-                                                document.body.innerHTML = `
-                                                    <h1>hubDUBa</h1>
-                                                    <div style='margin-top:40px;'>
-                                                        <p>Success! You guessed the country correctly: Sri Lanka!</p>
-                                                        <button id='continueBtn' style='margin-top:20px;padding:10px 20px;font-size:1em;'>Continue</button>
-                                                    </div>
-                                                `;
-                                                if (globalAudio.paused) { globalAudio.play().catch(() => {}); }
-                                                setTimeout(function() {
-                                                    document.getElementById('continueBtn').addEventListener('click', function() {
-                                                        renderHuntScreen(['Home'], huntTree, 'Navigate this website and look for the special password!', true, false);
-                                                    });
-                                                },0);
-                                            }
-                                        });
-                                    });
-                                },0);
-                            }
-                        });
-                    });
-                },0);
-            }
+        function ensureAudio() { if (globalAudio.paused) globalAudio.play().catch(() => {}); }
+        document.addEventListener('click', function start() {
+            ensureAudio();
+            document.removeEventListener('click', start);
         });
-        // Clean up event listener and navigation logic
-        // Remove stray closing brackets and setTimeout at the end
-        // End scavenger hunt logic cleanly
-        // Attach link listeners
-        setTimeout(function() {
-            links.forEach(function(l) {
+
+        /* ── Data ── */
+        const huntTree = [
+            { id: 'link1', text: 'Link 1' },
+            { id: 'link2', text: 'Link 2' },
+            { id: 'link3', text: 'Link 3' },
+            { id: 'link4', text: 'Link 4' },
+            { id: 'link5', text: 'Link 5' }
+        ];
+
+        const countries = [
+            'Andorra','Comoros','Djibouti','Eswatini','Kiribati',
+            'Liechtenstein','Malta','Nauru','Palau','San Marino',
+            'Seychelles','Solomon Islands','Suriname','Tuvalu',
+            'Vanuatu','Sri Lanka'
+        ];
+
+        const app = document.getElementById('app');
+
+        /* ── Route table for scavenger hunt ── */
+        const huntRoutes = {
+            'link1':      { bc: ['Home','Link 1'],                              links: [{id:'link1a',text:'Link 1A'},{id:'link1b',text:'Link 1B'}], msg: 'Keep searching! Try another link.' },
+            'link1a':     { bc: ['Home','Link 1','Link 1A'],                    links: [{id:'link1a1',text:'Link 1A1'},{id:'link1a2',text:'Link 1A2'}], msg: 'Still not here. Try another.' },
+            'link1b':     { bc: ['Home','Link 1','Link 1B'],                    links: [], msg: 'No password here!' },
+            'link1a1':    { bc: ['Home','Link 1','Link 1A','Link 1A1'],         links: [], msg: 'No password here!' },
+            'link1a2':    { bc: ['Home','Link 1','Link 1A','Link 1A2'],         links: [], msg: 'No password here!' },
+            'link2':      { bc: ['Home','Link 2'],                              links: [{id:'link2a',text:'Link 2A'},{id:'link2b',text:'Link 2B'}], msg: 'Keep searching! Try another link.' },
+            'link2a':     { bc: ['Home','Link 2','Link 2A'],                    links: [{id:'link2a1',text:'Link 2A1'},{id:'link2a2',text:'Link 2A2'}], msg: 'Almost there! Try Link 2A2.' },
+            'link2a1':    { bc: ['Home','Link 2','Link 2A','Link 2A1'],         links: [], msg: 'No password here!' },
+            'link2a2':    { bc: ['Home','Link 2','Link 2A','Link 2A2'],         links: [{id:'link2a2final',text:'Final Link'}], msg: 'Final step!' },
+            'link2a2final': { bc: ['Home','Link 2','Link 2A','Link 2A2','Final Link'], links: [], msg: 'You found the end! The password is Decimal.', isFinal: true },
+            'link2b':     { bc: ['Home','Link 2','Link 2B'],                    links: [], msg: 'No password here!' },
+            'link3':      { bc: ['Home','Link 3'],                              links: [], msg: 'Keep searching! Try another link.' },
+            'link4':      { bc: ['Home','Link 4'],                              links: [], msg: 'Keep searching! Try another link.' },
+            'link5':      { bc: ['Home','Link 5'],                              links: [], msg: 'Keep searching! Try another link.' }
+        };
+
+        /* ── Screen: Password ── */
+        function renderPasswordScreen() {
+            app.innerHTML = '<h1>hubBUDa</h1><input id="passwordBox" type="text" placeholder="Enter password..." />';
+            ensureAudio();
+            const box = document.getElementById('passwordBox');
+            box.addEventListener('input', function () {
+                if (box.value.trim().toLowerCase() === 'gotcha') {
+                    box.value = '';
+                    renderMathScreen();
+                }
+            });
+        }
+
+        /* ── Screen: Math puzzle ── */
+        function renderMathScreen() {
+            app.innerHTML = `
+                <h1>hubDUBa</h1>
+                <div style="margin-top:40px;">
+                    <p>Puzzle: What is (3 + 5) &times; 2 - 4?</p>
+                    <div>
+                        <label><input type="radio" name="math" value="12"> 12</label><br>
+                        <label><input type="radio" name="math" value="14"> 14</label><br>
+                        <label><input type="radio" name="math" value="16"> 16</label><br>
+                        <label><input type="radio" name="math" value="10"> 10</label><br>
+                    </div>
+                </div>`;
+            ensureAudio();
+            document.querySelectorAll("input[name='math']").forEach(function (r) {
+                r.addEventListener('click', function () {
+                    if (this.value === '14') renderVideoScreen();
+                });
+            });
+        }
+
+        /* ── Screen: Video + Country ── */
+        function renderVideoScreen() {
+            const opts = countries.map(c =>
+                "<label><input type='radio' name='country' value='" + c + "'> " + c + "</label><br>"
+            ).join('');
+            app.innerHTML = `
+                <h1>hubDUBa</h1>
+                <div style="margin-top:40px;">
+                    <p>Congratulations! Here is your video:</p>
+                    <div id="videoContainer">
+                        <video width="480" controls autoplay>
+                            <source src="assets/video/video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div style="margin-top:40px;">
+                        <p>What country is this?</p>
+                        <div id="countryChoices">${opts}</div>
+                    </div>
+                </div>`;
+            ensureAudio();
+            document.querySelectorAll("input[name='country']").forEach(function (r) {
+                r.addEventListener('click', function () {
+                    if (this.value === 'Sri Lanka') renderSuccessScreen();
+                });
+            });
+        }
+
+        /* ── Screen: Success ── */
+        function renderSuccessScreen() {
+            app.innerHTML = `
+                <h1>hubDUBa</h1>
+                <div style="margin-top:40px;">
+                    <p>Success! You guessed the country correctly: Sri Lanka!</p>
+                    <button id="continueBtn" style="margin-top:20px;padding:10px 20px;font-size:1em;">Continue</button>
+                </div>`;
+            ensureAudio();
+            document.getElementById('continueBtn').addEventListener('click', function () {
+                renderHuntScreen(['Home'], huntTree, 'Navigate this website and look for the special password!', true);
+            });
+        }
+
+        /* ── Screen: Scavenger hunt ── */
+        function renderHuntScreen(breadcrumb, links, message, isHome) {
+            const bcHTML = breadcrumb.map(b => '<span>' + b + '</span>').join('');
+            const lnHTML = links.map(l => '<a class="hunt-link" id="' + l.id + '">' + l.text + '</a>').join('');
+            app.innerHTML =
+                '<h1>hubDUBa</h1>' +
+                '<div class="breadcrumb">' + bcHTML + '</div>' +
+                '<p>' + message + '</p>' +
+                '<div>' + lnHTML + '</div>' +
+                (isHome ? '' : '<button id="backBtn">Back</button>');
+            ensureAudio();
+
+            /* link handlers */
+            links.forEach(function (l) {
                 var el = document.getElementById(l.id);
                 if (el) {
-                    el.addEventListener('click', function() {
-                        // Branch logic
-                        if (l.id === 'link1') {
-                            renderHuntScreen(['Home','Link 1'], [
-                                {id:'link1a',text:'Link 1A'},
-                                {id:'link1b',text:'Link 1B'}
-                            ], 'Keep searching! Try another link.', false, false);
-                        } else if (l.id === 'link1a') {
-                            renderHuntScreen(['Home','Link 1','Link 1A'], [
-                                {id:'link1a1',text:'Link 1A1'},
-                                {id:'link1a2',text:'Link 1A2'}
-                            ], 'Still not here. Try another.', false, false);
-                        } else if (l.id === 'link2') {
-                            renderHuntScreen(['Home','Link 2'], [
-                                {id:'link2a',text:'Link 2A'},
-                                {id:'link2b',text:'Link 2B'}
-                            ], 'Keep searching! Try another link.', false, false);
-                        } else if (l.id === 'link2a') {
-                            renderHuntScreen(['Home','Link 2','Link 2A'], [
-                                {id:'link2a1',text:'Link 2A1'},
-                                {id:'link2a2',text:'Link 2A2'}
-                            ], 'Almost there! Try Link 2A2.', false, false);
-                        } else if (l.id === 'link2a2') {
-                            renderHuntScreen(['Home','Link 2','Link 2A','Link 2A2'], [
-                                {id:'link2a2final',text:'Final Link'}
-                            ], 'Final step!', false, false);
-                        } else if (l.id === 'link2a2final') {
-                            renderHuntScreen(['Home','Link 2','Link 2A','Link 2A2','Final Link'], [], 'You found the end! The password is Decimal.', false, true);
-                        } else if (l.id === 'link2b') {
-                            renderHuntScreen(breadcrumb.concat([l.text]), [], 'No password here!', false, false);
-                        } else if (l.id === 'finalBack') {
-                            renderHuntScreen(['Home','Link 2','Link 2A','Link 2A2'], [
-                                {id:'link2a2final',text:'Final Link'}
-                            ], 'Final step!', false, false);
-                        } else if (['link3','link4','link5'].includes(l.id)) {
-                            renderHuntScreen(['Home',l.text], [], 'Keep searching! Try another link.', false, false);
-                        }
+                    el.addEventListener('click', function () {
+                        var route = huntRoutes[l.id];
+                        if (route) renderHuntScreen(route.bc, route.links, route.msg, false);
                     });
                 }
-        // Removed stray closing bracket
-            // Back navigation
-            if (showBack) {
-                var backEl = document.getElementById(backId);
-                if (backEl) {
-                    backEl.addEventListener('click', function() {
-                        let prev = breadcrumb.slice(0, -1);
-                        if (prev.length === 0) {
-                            document.body.innerHTML = `
-                                <h1>hubBUDa</h1>
-                                <input id="passwordBox" type="text" placeholder="Enter password..." />
-                            `;
-                            if (globalAudio.paused) { globalAudio.play().catch(() => {}); }
-                            setTimeout(function() {
-                                const passwordBox = document.getElementById('passwordBox');
-                                function triggerPuzzleScreen() {
-                                    document.body.innerHTML = `
-                                        <h1>hubDUBa</h1>
-                                        <div style='margin-top:40px;'>
-                                            <p>Puzzle: What is (3 + 5) × 2 - 4?</p>
-                                            <div>
-                                                <label><input type='radio' name='math' value='12'> 12</label><br>
-                                                <label><input type='radio' name='math' value='14'> 14</label><br>
-                                                <label><input type='radio' name='math' value='16'> 16</label><br>
-                                                <label><input type='radio' name='math' value='10'> 10</label><br>
-                                            </div>
-                                        </div>
-                                    `;
-                                    if (globalAudio.paused) { globalAudio.play().catch(() => {}); }
-                                    setTimeout(function() {
-                                        document.querySelectorAll("input[name='math']").forEach(function(radio) {
-                                            radio.addEventListener('click', function() {
-                                                if (this.value === '14') {
-                                                    document.body.innerHTML = `
-                                                        <h1>hubDUBa</h1>
-                                                        <div style='margin-top:40px;'>
-                                                            <p>Congratulations! Here is your video:</p>
-                                                            <div id='videoContainer'>
-                                                                <video width='480' controls autoplay>
-                                                                    <source src='assets/video/video.mp4' type='video/mp4'>
-                                                                    Your browser does not support the video tag.
-                                                                </video>
-                                                            </div>
-                                                            <div style='margin-top:40px;'>
-                                                                <p>What country is this?</p>
-                                                                <div id='countryChoices'>
-                                                                    <label><input type='radio' name='country' value='Andorra'> Andorra</label><br>
-                                                                    <label><input type='radio' name='country' value='Comoros'> Comoros</label><br>
-                                                                    <label><input type='radio' name='country' value='Djibouti'> Djibouti</label><br>
-                                                                    <label><input type='radio' name='country' value='Eswatini'> Eswatini</label><br>
-                                                                    <label><input type='radio' name='country' value='Kiribati'> Kiribati</label><br>
-                                                                    <label><input type='radio' name='country' value='Liechtenstein'> Liechtenstein</label><br>
-                                                                    <label><input type='radio' name='country' value='Malta'> Malta</label><br>
-                                                                    <label><input type='radio' name='country' value='Nauru'> Nauru</label><br>
-                                                                    <label><input type='radio' name='country' value='Palau'> Palau</label><br>
-                                                                    <label><input type='radio' name='country' value='San Marino'> San Marino</label><br>
-                                                                    <label><input type='radio' name='country' value='Seychelles'> Seychelles</label><br>
-                                                                    <label><input type='radio' name='country' value='Solomon Islands'> Solomon Islands</label><br>
-                                                                    <label><input type='radio' name='country' value='Suriname'> Suriname</label><br>
-                                                                    <label><input type='radio' name='country' value='Tuvalu'> Tuvalu</label><br>
-                                                                    <label><input type='radio' name='country' value='Vanuatu'> Vanuatu</label><br>
-                                                                    <label><input type='radio' name='country' value='Sri Lanka'> Sri Lanka</label><br>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    `;
-                                                    if (globalAudio.paused) { globalAudio.play().catch(() => {}); }
-                                                    setTimeout(playAudio, 0);
-                                                    setTimeout(function() {
-                                                        document.querySelectorAll("input[name='country']").forEach(function(radio) {
-                                                            radio.addEventListener('click', function() {
-                                                                if (this.value === 'Sri Lanka') {
-                                                                    document.body.innerHTML = `
-                                                                        <h1>hubDUBa</h1>
-                                                                        <div style='margin-top:40px;'>
-                                                                            <p>Success! You guessed the country correctly: Sri Lanka!</p>
-                                                                            <button id='continueBtn' style='margin-top:20px;padding:10px 20px;font-size:1em;'>Continue</button>
-                                                                        </div>
-                                                                    `;
-                                                                    if (globalAudio.paused) { globalAudio.play().catch(() => {}); }
-                                                                    setTimeout(function() {
-                                                                        document.getElementById('continueBtn').addEventListener('click', function() {
-                                                                            renderHuntScreen(['Home'], huntTree, 'Navigate this website and look for the special password!', true, false);
-                                                                        });
-                                                                    },0);
-                                                                }
-                                                            });
-                                                        });
-                                                    },0);
-                                                }
-                                            });
-                                        });
-                                    },0);
-                                }
-                                passwordBox.addEventListener('input', function() {
-                                    const val = passwordBox.value.trim();
-                                    if (val.toLowerCase() === 'gotcha') {
-                                        // Only trigger once
-                                        passwordBox.value = '';
-                                        document.body.innerHTML = `
-                                            <h1>hubDUBa</h1>
-                                            <div style='margin-top:40px;'>
-                                                <p>Puzzle: What is (3 + 5) × 2 - 4?</p>
-                                                <div>
-                                                    <label><input type='radio' name='math' value='12'> 12</label><br>
-                                                    <label><input type='radio' name='math' value='14'> 14</label><br>
-                                                    <label><input type='radio' name='math' value='16'> 16</label><br>
-                                                    <label><input type='radio' name='math' value='10'> 10</label><br>
-                                                </div>
-                                            </div>
-                                        `;
-                                        if (globalAudio.paused) { globalAudio.play().catch(() => {}); }
-                                        setTimeout(function() {
-                                            document.querySelectorAll("input[name='math']").forEach(function(radio) {
-                                                radio.addEventListener('click', function() {
-                                                    if (this.value === '14') {
-                                                        document.body.innerHTML = `
-                                                            <h1>hubDUBa</h1>
-                                                            <div style='margin-top:40px;'>
-                                                                <p>Congratulations! Here is your video:</p>
-                                                                <div id='videoContainer'>
-                                                                    <video width='480' controls autoplay>
-                                                                        <source src='assets/video/video.mp4' type='video/mp4'>
-                                                                        Your browser does not support the video tag.
-                                                                    </video>
-                                                                </div>
-                                                                <div style='margin-top:40px;'>
-                                                                    <p>What country is this?</p>
-                                                                    <div id='countryChoices'>
-                                                                        <label><input type='radio' name='country' value='Andorra'> Andorra</label><br>
-                                                                        <label><input type='radio' name='country' value='Comoros'> Comoros</label><br>
-                                                                        <label><input type='radio' name='country' value='Djibouti'> Djibouti</label><br>
-                                                                        <label><input type='radio' name='country' value='Eswatini'> Eswatini</label><br>
-                                                                        <label><input type='radio' name='country' value='Kiribati'> Kiribati</label><br>
-                                                                        <label><input type='radio' name='country' value='Liechtenstein'> Liechtenstein</label><br>
-                                                                        <label><input type='radio' name='country' value='Malta'> Malta</label><br>
-                                                                        <label><input type='radio' name='country' value='Nauru'> Nauru</label><br>
-                                                                        <label><input type='radio' name='country' value='Palau'> Palau</label><br>
-                                                                        <label><input type='radio' name='country' value='San Marino'> San Marino</label><br>
-                                                                        <label><input type='radio' name='country' value='Seychelles'> Seychelles</label><br>
-                                                                        <label><input type='radio' name='country' value='Solomon Islands'> Solomon Islands</label><br>
-                                                                        <label><input type='radio' name='country' value='Suriname'> Suriname</label><br>
-                                                                        <label><input type='radio' name='country' value='Tuvalu'> Tuvalu</label><br>
-                                                                        <label><input type='radio' name='country' value='Vanuatu'> Vanuatu</label><br>
-                                                                        <label><input type='radio' name='country' value='Sri Lanka'> Sri Lanka</label><br>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        `;
-                                                        if (globalAudio.paused) { globalAudio.play().catch(() => {}); }
-                                                        setTimeout(function() {
-                                                            document.querySelectorAll("input[name='country']").forEach(function(radio) {
-                                                                radio.addEventListener('click', function() {
-                                                                    if (this.value === 'Sri Lanka') {
-                                                                        document.body.innerHTML = `
-                                                                            <h1>hubDUBa</h1>
-                                                                            <div style='margin-top:40px;'>
-                                                                                <p>Success! You guessed the country correctly: Sri Lanka!</p>
-                                                                                <button id='continueBtn' style='margin-top:20px;padding:10px 20px;font-size:1em;'>Continue</button>
-                                                                            </div>
-                                                                        `;
-                                                                        if (globalAudio.paused) { globalAudio.play().catch(() => {}); }
-                                                                        setTimeout(function() {
-                                                                            document.getElementById('continueBtn').addEventListener('click', function() {
-                                                                                renderHuntScreen(['Home'], huntTree, 'Navigate this website and look for the special password!', true, false);
-                                                                            });
-                                                                        },0);
-                                                                    }
-                                                                });
-                                                            });
-                                                        },0);
-                                                    }
-                                                });
-                                            });
-                                        },0);
-                                    }
-                                });
-                                passwordBox.addEventListener('keydown', function(e) {
-                                    if (e.key === 'Enter' && passwordBox.value.trim().toLowerCase() === 'gotcha') {
-                                        triggerPuzzleScreen();
-                                    }
-                                });
-                            },0);
-                        } else if (prev.length === 1) {
-                            renderHuntScreen(['Home'], huntTree, 'Navigate this website and look for the special password!', true, false);
-                        } else if (prev.join('') === 'HomeLink 1') {
-                            renderHuntScreen(['Home','Link 1'], [
-                                {id:'link1a',text:'Link 1A'},
-                                {id:'link1b',text:'Link 1B'}
-                            ], 'Keep searching! Try another link.', false, false);
-                        } else if (prev.join('') === 'HomeLink 1Link 1A') {
-                            renderHuntScreen(['Home','Link 1','Link 1A'], [
-                                {id:'link1a1',text:'Link 1A1'},
-                                {id:'link1a2',text:'Link 1A2'}
-                            ], 'Still not here. Try another.', false, false);
-                        } else if (prev.join('') === 'HomeLink 2') {
-                            renderHuntScreen(['Home','Link 2'], [
-                                {id:'link2a',text:'Link 2A'},
-                                {id:'link2b',text:'Link 2B'}
-                            ], 'Keep searching! Try another link.', false, false);
-                        } else if (prev.join('') === 'HomeLink 2Link 2A') {
-                            renderHuntScreen(['Home','Link 2','Link 2A'], [
-                                {id:'link2a1',text:'Link 2A1'},
-                                {id:'link2a2',text:'Link 2A2'}
-                            ], 'Almost there! Try Link 2A2.', false, false);
-                        } else if (prev.join('') === 'HomeLink 2Link 2ALink 2A2') {
-                            renderHuntScreen(['Home','Link 2','Link 2A','Link 2A2'], [
-                                {id:'link2a2final',text:'Final Link'}
-                            ], 'Final step!', false, false);
-                        } else {
-                            renderHuntScreen(['Home'], huntTree, 'Navigate this website and look for the special password!', true, false);
+            });
+
+            /* back button */
+            if (!isHome) {
+                var backBtn = document.getElementById('backBtn');
+                if (backBtn) {
+                    backBtn.addEventListener('click', function () {
+                        var prev = breadcrumb.slice(0, -1);
+                        if (prev.length <= 1) {
+                            renderHuntScreen(['Home'], huntTree, 'Navigate this website and look for the special password!', true);
+                            return;
                         }
+                        /* find matching route by breadcrumb */
+                        var key = prev.join('>');
+                        for (var id in huntRoutes) {
+                            if (huntRoutes[id].bc.join('>') === key) {
+                                renderHuntScreen(huntRoutes[id].bc, huntRoutes[id].links, huntRoutes[id].msg, false);
+                                return;
+                            }
+                        }
+                        renderHuntScreen(['Home'], huntTree, 'Navigate this website and look for the special password!', true);
                     });
                 }
             }
-</script>
-</script>
+        }
+
+        /* ── Boot ── */
+        renderPasswordScreen();
+    </script>
 </body>
 </html>
