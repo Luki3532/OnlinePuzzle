@@ -141,17 +141,48 @@
             });
         }
 
+        /* ── Screen: Victory ── */
+        function renderVictoryScreen() {
+            app.innerHTML = `
+                <h1>YOU WON A FROG!</h1>
+                <div style="margin-top:30px;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Atelopus_zeteki1.jpg/440px-Atelopus_zeteki1.jpg" alt="A frog" style="max-width:400px;width:100%;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+                    <p style="margin-top:20px;font-size:1.4em;font-weight:bold;">Congratulations! You won a frog!</p>
+                </div>`;
+            ensureAudio();
+        }
+
         /* ── Screen: Scavenger hunt ── */
         function renderHuntScreen(breadcrumb, links, message, isHome) {
             const bcHTML = breadcrumb.map(b => '<span>' + b + '</span>').join('');
             const lnHTML = links.map(l => '<a class="hunt-link" id="' + l.id + '">' + l.text + '</a>').join('');
+            /* Check if this is the final screen */
+            var key = breadcrumb.join('>');
+            var isFinal = false;
+            for (var rid in huntRoutes) {
+                if (huntRoutes[rid].bc.join('>') === key && huntRoutes[rid].isFinal) { isFinal = true; break; }
+            }
+            var passwordHTML = isFinal ? '<div style="margin-top:20px;"><input id="huntPassword" type="text" placeholder="Enter the password..." style="padding:8px;font-size:1em;"></div>' : '';
             app.innerHTML =
                 '<h1>hubDUBa</h1>' +
                 '<div class="breadcrumb">' + bcHTML + '</div>' +
                 '<p>' + message + '</p>' +
                 '<div>' + lnHTML + '</div>' +
+                passwordHTML +
                 (isHome ? '' : '<button id="backBtn">Back</button>');
             ensureAudio();
+
+            /* hunt password handler */
+            if (isFinal) {
+                var huntPw = document.getElementById('huntPassword');
+                if (huntPw) {
+                    huntPw.addEventListener('input', function () {
+                        if (huntPw.value.trim().toLowerCase() === 'decimal') {
+                            renderVictoryScreen();
+                        }
+                    });
+                }
+            }
 
             /* link handlers */
             links.forEach(function (l) {
